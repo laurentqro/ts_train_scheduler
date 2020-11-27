@@ -1,5 +1,5 @@
 export class TrackUid {
-    value: string
+    private value: string
 
     constructor(value: string) {
         const regex = RegExp('^[0-9]{9}$')
@@ -10,5 +10,9 @@ export class TrackUid {
         }
 
         this.value = value
+    }
+
+    toString(): string {
+        return this.value.toString()
     }
 }
