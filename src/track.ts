@@ -5,4 +5,5 @@ export interface Track {
     readonly endpointUids: readonly [Station, Station]
     readonly capacity: PositiveInteger
     readonly maxSpeed: PositiveInteger
+    readonly distance: PositiveInteger
 }
