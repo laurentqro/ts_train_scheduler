@@ -1,4 +1,4 @@
-export class PlatformCode {
+export class PlatformUid {
     value: string
 
     constructor(value: string) {

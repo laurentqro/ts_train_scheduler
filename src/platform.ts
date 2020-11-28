@@ -1,7 +1,7 @@
-import { PlatformCode } from "./platform-code"
+import { PlatformUid } from "./platform-uid"
 import { PositiveInteger } from "./positive-integer";
 
 export interface Platform {
-    readonly uid: PlatformCode
+    readonly uid: PlatformUid
     readonly length: PositiveInteger
 }

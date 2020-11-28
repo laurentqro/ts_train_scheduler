@@ -1,4 +1,4 @@
-export class StationCode {
+export class StationUid {
     private constructor(private value: string) {
         const regex = RegExp('^[A-Z]{3}$')
         let isValid = regex.test(value)
@@ -8,17 +8,17 @@ export class StationCode {
         }
     }
 
-    public static new(value: string): StationCode {
-        let key = StationCode.key(value)
-        let instance = StationCode.instances[key]
+    public static new(value: string): StationUid {
+        let key = StationUid.key(value)
+        let instance = StationUid.instances[key]
 
         if (instance) {
             throw Error("A station with this code already exists.")
         }
 
         if (instance == undefined) {
-            instance = new StationCode(value)
-            StationCode.instances[key] = instance
+            instance = new StationUid(value)
+            StationUid.instances[key] = instance
         }
 
         return instance
@@ -33,6 +33,6 @@ export class StationCode {
     }
 
     private static instances: {
-        [key: string]: StationCode | undefined
+        [key: string]: StationUid | undefined
     } = {}
 }

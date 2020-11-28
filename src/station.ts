@@ -1,13 +1,13 @@
-import { StationCode } from "./station-code"
+import { StationUid } from "./station-uid"
 import { Platform } from "./platform"
 import { PositiveInteger } from "./positive-integer"
 
 export class Station {
-    readonly uid: StationCode
+    readonly uid: StationUid
     readonly stopTime: PositiveInteger
     readonly platforms: readonly Platform[]
 
-    constructor(uid: StationCode, stopTime: PositiveInteger, platforms: Platform[]) {
+    constructor(uid: StationUid, stopTime: PositiveInteger, platforms: Platform[]) {
         this.uid = uid
         this.stopTime = stopTime
 
