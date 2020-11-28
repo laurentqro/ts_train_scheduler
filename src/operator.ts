@@ -1,10 +1,11 @@
+import { OperatorUid } from "./operator-uid"
 import { Train } from "./train"
 
 export class Operator {
-    readonly uid: string
+    readonly uid: OperatorUid
     readonly trains: readonly Train[]
 
-    constructor(uid: string, trains: Train[]) {
+    constructor(uid: OperatorUid, trains: Train[]) {
         this.uid = uid
 
         if (this.haveUniqueUids(trains)) {
