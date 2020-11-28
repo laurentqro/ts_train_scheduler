@@ -1,7 +1,38 @@
-type Letter = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "I" |
-              "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" |
-              "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+export class StationCode {
+    private constructor(private value: string) {
+        const regex = RegExp('^[A-Z]{3}$')
+        let isValid = regex.test(value)
 
-type StationCode = `${Letter}${Letter}${Letter}`
+        if (!isValid) {
+            throw Error("Station code must be three capital Latin letters [A-Z]")
+        }
+    }
 
-export { StationCode }
+    public static new(value: string): StationCode {
+        let key = StationCode.key(value)
+        let instance = StationCode.instances[key]
+
+        if (instance) {
+            throw Error("A station with this code already exists.")
+        }
+
+        if (instance == undefined) {
+            instance = new StationCode(value)
+            StationCode.instances[key] = instance
+        }
+
+        return instance
+    }
+
+    toString(): string {
+        return this.value.toString()
+    }
+
+    private static key(value: string): string {
+        return value.toString()
+    }
+
+    private static instances: {
+        [key: string]: StationCode | undefined
+    } = {}
+}
