@@ -2,7 +2,7 @@ import { OperatorUid } from "./operator-uid";
 import { ServiceUid } from "./service-uid";
 import { Stop } from "./stop";
 
-export class Service {
+export class ServiceBid {
     readonly uid: ServiceUid
     readonly operatorUid: OperatorUid
     readonly stops: readonly [Stop, Stop, ...Stop[]]
