@@ -9,6 +9,7 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "outDir": "dist",
+        "resolveJsonModule": true,
     },
     "include": [
         "src",
