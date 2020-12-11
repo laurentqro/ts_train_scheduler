@@ -12,10 +12,6 @@ export class StationUid {
         let key = StationUid.key(value)
         let instance = StationUid.instances[key]
 
-        if (instance) {
-            throw Error("A station with this code already exists.")
-        }
-
         if (instance == undefined) {
             instance = new StationUid(value)
             StationUid.instances[key] = instance

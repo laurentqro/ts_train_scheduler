@@ -9,6 +9,5 @@ test('station is identified by a 3-letter code (capital Latin letters [A-Z])', (
 })
 
 test('station code is unique', () => {
-    StationUid.new("DEF")
-    expect(() => StationUid.new("DEF")).toThrow(Error)
+    expect(StationUid.new("DEF")).toEqual(StationUid.new("DEF"))
 })
