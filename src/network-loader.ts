@@ -10,11 +10,11 @@ import { Track } from "./track";
 
 export class NetworkLoader {
     static loadNetwork(data: any): Network {
-        return {
-            stations: NetworkLoader.loadStations(data),
-            tracks: NetworkLoader.loadTracks(data),
-            operators: NetworkLoader.loadOperators(data),
-        }
+        return new Network(
+            NetworkLoader.loadStations(data),
+            NetworkLoader.loadTracks(data),
+            NetworkLoader.loadOperators(data)
+        )
     }
 
     private static loadStations(data: any): Station[] {
