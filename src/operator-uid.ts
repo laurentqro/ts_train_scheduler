@@ -12,10 +12,6 @@ export class OperatorUid {
         let key = OperatorUid.key(value)
         let instance = OperatorUid.instances[key]
 
-        if (instance) {
-            throw Error("An operator with this UID already exists.")
-        }
-
         if (instance == undefined) {
             instance = new OperatorUid(value)
             OperatorUid.instances[key] = instance

@@ -6,6 +6,5 @@ test('operator uid is 3-capital-letter code', () => {
 })
 
 test('operator uid is unique', () => {
-    OperatorUid.new("CDE")
-    expect(() => OperatorUid.new("CDE")).toThrow(Error)
+    expect(OperatorUid.new("CDE")).toEqual(OperatorUid.new("CDE"))
 })
