@@ -1,6 +1,7 @@
 import { Operator } from "./operator";
 import { OperatorUid } from "./operator-uid";
 import { Station } from "./station"
+import { StationUid } from "./station-uid";
 import { Track } from "./track"
 
 interface INetwork {
@@ -8,6 +9,7 @@ interface INetwork {
     readonly tracks: readonly Track[]
     readonly operators: readonly Operator[]
     getOperator: (uid: OperatorUid) => Operator | null
+    getStation: (uid: StationUid) => Station | null
 }
 
 export class Network implements INetwork {
@@ -23,5 +25,9 @@ export class Network implements INetwork {
 
     getOperator(uid: OperatorUid): Operator | null {
         return this.operators.find((operator) => operator.uid == uid) || null
+    }
+
+    getStation(uid: StationUid): Station | null {
+        return this.stations.find((station) => station.uid == uid) || null
     }
 }
