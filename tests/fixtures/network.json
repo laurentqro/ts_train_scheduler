@@ -1,0 +1,115 @@
+{
+    "stations": [
+        {
+            "uid": "LHR",
+            "stopTime": 5,
+            "platforms": [
+                {
+                    "uid": "1234",
+                    "length": 5
+                },
+                {
+                    "uid": "5678",
+                    "length": 6
+                }
+            ]
+
+        },
+        {
+            "uid": "NCE",
+            "stopTime": 3,
+            "platforms": [
+                {
+                    "uid": "123N",
+                    "length": 3
+                },
+                {
+                    "uid": "456N",
+                    "length": 7
+                }
+            ]
+        },
+        {
+            "uid": "JFK",
+            "stopTime": 2,
+            "platforms": [
+                {
+                    "uid": "123",
+                    "length": 3
+                },
+                {
+                    "uid": "456",
+                    "length": 7
+                },
+                {
+                    "uid": "789",
+                    "length": 7
+                }
+            ]
+        }
+    ],
+    "tracks": [
+        {
+            "uid": "123456789",
+            "endpointUids": ["LHR", "NCE"],
+            "capacity": 5,
+            "maxSpeed": 100,
+            "distance": 300
+        },
+        {
+            "uid": "987654321",
+            "endpointUids": ["NCE", "JFK"],
+            "capacity": 10,
+            "maxSpeed": 150,
+            "distance": 500
+        },
+        {
+            "uid": "234567891",
+            "endpointUids": ["JFK", "LHR"],
+            "capacity": 25,
+            "maxSpeed": 170,
+            "distance": 700
+        }
+    ],
+    "operators": [
+        {
+            "uid": "ABC",
+            "trains": [
+                {
+                    "uid": "train1",
+                    "length": 2
+                },
+                {
+                    "uid": "train2",
+                    "length": 3
+                }
+            ]
+        },
+        {
+            "uid": "DEF",
+            "trains": [
+                {
+                    "uid": "123456",
+                    "length": 4
+                },
+                {
+                    "uid": "234561",
+                    "length": 5
+                }
+            ]
+        },
+        {
+            "uid": "GHI",
+            "trains": [
+                {
+                    "uid": "345612",
+                    "length": 6
+                },
+                {
+                    "uid": "456123",
+                    "length": 7
+                }
+            ]
+        }
+    ]
+}

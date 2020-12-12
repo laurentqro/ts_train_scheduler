@@ -1,0 +1,62 @@
+{
+    "stations": [
+        {
+            "uid": "CDG",
+            "stopTime": 1,
+            "platforms": [
+                {
+                    "uid": "1",
+                    "length": 1
+                }
+            ]
+
+        },
+        {
+            "uid": "LHR",
+            "stopTime": 2,
+            "platforms": [
+                {
+                    "uid": "1",
+                    "length": 2
+                }
+            ]
+        }
+    ],
+    "tracks": [
+        {
+            "uid": "123456789",
+            "endpointUids": ["CDG", "LHR"],
+            "capacity": 1,
+            "maxSpeed": 100,
+            "distance": 100
+        }
+    ],
+    "operators": [
+        {
+            "uid": "ABC",
+            "trains": [
+                {
+                    "uid": "train1",
+                    "length": 2
+                },
+                {
+                    "uid": "train2",
+                    "length": 3
+                }
+            ]
+        },
+        {
+            "uid": "DEF",
+            "trains": [
+                {
+                    "uid": "123456",
+                    "length": 4
+                },
+                {
+                    "uid": "234561",
+                    "length": 5
+                }
+            ]
+        }
+    ]
+}

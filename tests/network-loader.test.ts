@@ -1,4 +1,4 @@
-import * as data from "./network.json";
+import * as data from "./fixtures/network.json";
 
 import { Network } from "../src/network";
 import { NetworkLoader } from "../src/network-loader";
