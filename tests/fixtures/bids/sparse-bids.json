@@ -1,0 +1,36 @@
+[
+    {
+        "uid": 1,
+        "operatorUid": "ABC",
+        "stops": [
+            {
+                "stationUid": "CDG",
+                "arrivalTime": { "hh": 10, "mm": 0 },
+                "departureTime": { "hh": 10, "mm": 5 }
+            },
+            {
+                "stationUid": "LHR",
+                "arrivalTime": { "hh": 11, "mm": 0 },
+                "departureTime": { "hh": 11, "mm": 5 }
+            }
+        ],
+        "bidAmount": 100
+    },
+    {
+        "uid": 2,
+        "operatorUid": "DEF",
+        "stops": [
+            {
+                "stationUid": "CDG",
+                "arrivalTime": { "hh": 10, "mm": 0 },
+                "departureTime": { "hh": 10, "mm": 5 }
+            },
+            {
+                "stationUid": "LHR",
+                "arrivalTime": { "hh": 11, "mm": 0 },
+                "departureTime": { "hh": 11, "mm": 5 }
+            }
+        ],
+        "bidAmount": 105
+    }
+]
