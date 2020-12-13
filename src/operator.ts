@@ -11,7 +11,7 @@ export class Operator {
         if (this.haveUniqueUids(trains)) {
             this.trains = trains
         } else {
-            throw new Error
+            throw new Error("Train UIDs must be unique for any given operator")
         }
     }
 
