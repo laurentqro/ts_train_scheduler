@@ -1,5 +1,4 @@
 import { OperatorUid } from "./operator-uid";
-import { ServiceUid } from "./service-uid";
 import { Stop } from "./stop";
 
 export class ServiceBid {
