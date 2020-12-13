@@ -36,11 +36,11 @@
             "uid": "ABC",
             "trains": [
                 {
-                    "uid": "train1",
+                    "uid": "123456",
                     "length": 2
                 },
                 {
-                    "uid": "train2",
+                    "uid": "654321",
                     "length": 3
                 }
             ]
