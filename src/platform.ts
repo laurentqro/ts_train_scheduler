@@ -6,7 +6,7 @@ export class Platform {
     readonly uid: PlatformUid
     readonly length: PositiveInteger
 
-    constructor(uid: PlatformUid, length: PositiveInteger) {
+    private constructor(uid: PlatformUid, length: PositiveInteger) {
         this.uid = uid
         this.length = length
     }

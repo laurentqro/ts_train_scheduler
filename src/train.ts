@@ -6,7 +6,7 @@ export class Train {
     readonly uid: TrainUid
     readonly length: PositiveInteger
 
-    constructor(uid: TrainUid, length: PositiveInteger) {
+    private constructor(uid: TrainUid, length: PositiveInteger) {
         this.uid = uid
         this.length = length
     }

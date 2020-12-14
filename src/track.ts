@@ -10,7 +10,7 @@ export class Track {
     readonly maxSpeed: PositiveInteger
     readonly distance: PositiveInteger
 
-    constructor(uid: TrackUid,
+    private constructor(uid: TrackUid,
         endpointUids: readonly [StationUid, StationUid],
         capacity: PositiveInteger,
         maxSpeed: PositiveInteger,

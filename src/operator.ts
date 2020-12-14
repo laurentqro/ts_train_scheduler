@@ -6,7 +6,7 @@ export class Operator {
     readonly uid: OperatorUid
     readonly trains: readonly Train[]
 
-    constructor(uid: OperatorUid, trains: Train[]) {
+    private constructor(uid: OperatorUid, trains: Train[]) {
         this.uid = uid
 
         if (this.haveUniqueUids(trains)) {
