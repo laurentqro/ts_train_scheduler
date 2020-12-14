@@ -7,11 +7,13 @@ export class Station {
     readonly uid: StationUid
     readonly stopTime: PositiveInteger
     readonly platforms: readonly Platform[]
+    neighbours: Station[]
 
     private constructor(uid: StationUid, stopTime: PositiveInteger, platforms: Platform[]) {
         this.uid = uid
         this.stopTime = stopTime
         this.platforms = platforms
+        this.neighbours = []
     }
 
     static haveUniqueUids(platforms: PlatformData[]): Boolean {
@@ -32,6 +34,13 @@ export class Station {
             )
         } else {
             throw new Error("Error: platforms must have unique UIDs for a given station")
+        }
+    }
+
+    addNeighbour(station: Station) {
+        if (!this.neighbours.includes(station)) {
+            this.neighbours.push(station)
+            this.neighbours.sort((a, b) => (a.uid > b.uid) ? 1 : -1)
         }
     }
 }

@@ -20,7 +20,7 @@ describe('The network', () => {
 
     test('get station by UID', () => {
         let stationUid: StationUid = StationUid.new("LHR")
-        let station: Station | null = network.getStation(stationUid)
+        let station: Station | undefined = network.getStation(stationUid)
 
         expect(`${station?.uid}`).toEqual("LHR")
     })
@@ -30,9 +30,16 @@ describe('The network', () => {
         network.addStation(station)
 
         expect(network.stations).toContain(station)
+        expect(Network.vertices).toEqual({ "FOO": station})
     })
 
     test('add track', () => {
+        let station1 = Station.create({ uid: "ABC", stopTime: 5, platforms: []})
+        let station2 = Station.create({ uid: "DEF", stopTime: 5, platforms: []})
+
+        network.addStation(station1)
+        network.addStation(station2)
+
         let trackData: TrackData = {
             uid: "123456788",
             endpointUids: ["ABC", "DEF"],
@@ -46,5 +53,7 @@ describe('The network', () => {
         network.addTrack(track)
 
         expect(network.tracks).toContain(track)
+        expect(Network.vertices["ABC"]).toEqual(station1)
+        expect(Network.vertices["DEF"]).toEqual(station2)
     })
 })
