@@ -19,3 +19,27 @@ test('create a track', () => {
     expect(track.maxSpeed).toEqual(PositiveInteger.new(100n))
     expect(track.distance).toEqual(PositiveInteger.new(100n))
 })
+
+test('there exists only one track between two endpoints', () => {
+    let trackData1 = {
+        uid: "111111111",
+        endpointUids: ["ABC", "DEF"],
+        capacity: 1,
+        maxSpeed: 100,
+        distance: 100
+    }
+
+    let track1: Track = Track.create(trackData1)
+
+    let trackData2 = {
+        uid: "111111112",
+        endpointUids: ["ABC", "DEF"],
+        capacity: 1,
+        maxSpeed: 100,
+        distance: 100
+    }
+
+    let track2: Track = Track.create(trackData2)
+
+    expect(track1).toEqual(track2)
+})

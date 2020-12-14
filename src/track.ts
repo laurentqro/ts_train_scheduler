@@ -10,6 +10,12 @@ export class Track {
     readonly maxSpeed: PositiveInteger
     readonly distance: PositiveInteger
 
+    private static instances: { [key: string]: Track } = {}
+
+    private static key(endpointUids: readonly StationUid[]): string {
+        return endpointUids.map((e) => e.toString()).sort().join('-')
+    }
+
     private constructor(uid: TrackUid,
         endpointUids: readonly [StationUid, StationUid],
         capacity: PositiveInteger,
@@ -24,15 +30,29 @@ export class Track {
     }
 
     static create(trackData: TrackData): Track {
-        return {
-            uid: TrackUid.new(trackData.uid),
-            endpointUids: [
-                StationUid.new(trackData.endpointUids[0]),
-                StationUid.new(trackData.endpointUids[1]),
-            ],
-            capacity: PositiveInteger.new(BigInt(trackData.capacity)),
-            maxSpeed: PositiveInteger.new(BigInt(trackData.maxSpeed)),
-            distance: PositiveInteger.new(BigInt(trackData.distance)),
+        let stationUids = [
+            StationUid.new(trackData.endpointUids[0]),
+            StationUid.new(trackData.endpointUids[1])
+        ]
+
+        let key = Track.key(stationUids)
+        let instance = Track.instances[key]
+
+        if (instance == undefined) {
+            instance = {
+                uid: TrackUid.new(trackData.uid),
+                endpointUids: [
+                    StationUid.new(trackData.endpointUids[0]),
+                    StationUid.new(trackData.endpointUids[1]),
+                ],
+                capacity: PositiveInteger.new(BigInt(trackData.capacity)),
+                maxSpeed: PositiveInteger.new(BigInt(trackData.maxSpeed)),
+                distance: PositiveInteger.new(BigInt(trackData.distance)),
+            }
+
+            Track.instances[key] = instance
         }
+
+        return instance
     }
 }
