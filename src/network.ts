@@ -4,18 +4,10 @@ import { Station } from "./station"
 import { StationUid } from "./station-uid";
 import { Track } from "./track"
 
-interface INetwork {
-    readonly stations: readonly Station[]
-    readonly tracks: readonly Track[]
-    readonly operators: readonly Operator[]
-    getOperator: (uid: OperatorUid) => Operator | null
-    getStation: (uid: StationUid) => Station | null
-}
-
-export class Network implements INetwork {
-    readonly stations: readonly Station[]
-    readonly tracks: readonly Track[]
-    readonly operators: readonly Operator[]
+export class Network {
+    readonly stations: Station[]
+    readonly tracks: Track[]
+    readonly operators: Operator[]
 
     constructor(stations: Station[], tracks: Track[], operators: Operator[]) {
         this.stations = stations
@@ -29,5 +21,14 @@ export class Network implements INetwork {
 
     getStation(uid: StationUid): Station | null {
         return this.stations.find((station) => station.uid == uid) || null
+    }
+
+    addStation(station: Station): string | undefined {
+        if (this.getStation(station.uid)) {
+            return "Error: station with this UID already exists"
+        } else {
+            this.stations.push(station)
+            return undefined
+        }
     }
 }

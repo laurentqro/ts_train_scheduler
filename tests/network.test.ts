@@ -22,4 +22,19 @@ describe('The network', () => {
 
         expect(`${station?.uid}`).toEqual("LHR")
     })
+
+    test('add station', () => {
+        let station: Station = Station.create({ uid: "FOO", stopTime: 5, platforms: [] })
+        network.addStation(station)
+
+        expect(network.stations).toContain(station)
+    })
+
+    test('do not add station if it already exists', () => {
+        let station: Station = Station.create({ uid: "FOO", stopTime: 5, platforms: [] })
+
+        network.addStation(station)
+        let result = network.addStation(station)
+        expect(result).toEqual("Error: station with this UID already exists")
+    })
 })
