@@ -23,12 +23,13 @@ export class Network {
         return this.stations.find((station) => station.uid == uid) || null
     }
 
-    addStation(station: Station): string | undefined {
-        if (this.getStation(station.uid)) {
-            return "Error: station with this UID already exists"
-        } else {
-            this.stations.push(station)
-            return undefined
-        }
+    addStation(station: Station): undefined {
+        this.stations.push(station)
+        return undefined
+    }
+
+    addTrack(track: Track): undefined {
+        this.tracks.push(track)
+        return undefined
     }
 }
