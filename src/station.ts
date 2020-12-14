@@ -8,29 +8,30 @@ export class Station {
     readonly stopTime: PositiveInteger
     readonly platforms: readonly Platform[]
 
-    constructor(uid: StationUid, stopTime: PositiveInteger, platforms: Platform[]) {
+    private constructor(uid: StationUid, stopTime: PositiveInteger, platforms: Platform[]) {
         this.uid = uid
         this.stopTime = stopTime
-
-        if (this.haveUniqueUids(platforms)) {
-            this.platforms = platforms
-        } else {
-            throw new Error
-        }
+        this.platforms = platforms
     }
 
-    haveUniqueUids(platforms: Platform[]): Boolean {
-        let uids = platforms.map((platform) => `${platform.uid}` )
+    static haveUniqueUids(platforms: PlatformData[]): Boolean {
+        let uids = platforms.map((platform) => `${platform.uid}`)
         return (new Set(uids)).size == uids.length;
     }
 
     static create(station: StationData): Station {
-        return new Station(
-            StationUid.new(station.uid),
-            PositiveInteger.new(BigInt(station.stopTime)),
-            station.platforms.map((platformData: PlatformData) =>
-                Platform.create(platformData)
-            )
+        let platforms = station.platforms.map((platformData: PlatformData) =>
+            Platform.create(platformData)
         )
+
+        if (this.haveUniqueUids(station.platforms)) {
+            return new Station(
+                StationUid.new(station.uid),
+                PositiveInteger.new(BigInt(station.stopTime)),
+                platforms
+            )
+        } else {
+            throw new Error("Error: platforms must have unique UIDs for a given station")
+        }
     }
 }
