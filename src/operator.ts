@@ -8,23 +8,22 @@ export class Operator {
 
     private constructor(uid: OperatorUid, trains: Train[]) {
         this.uid = uid
-
-        if (this.haveUniqueUids(trains)) {
-            this.trains = trains
-        } else {
-            throw new Error("Train UIDs must be unique for any given operator")
-        }
+        this.trains = trains
     }
 
-    haveUniqueUids(trains: Train[]): Boolean {
+    static haveUniqueUids(trains: TrainData[]): Boolean {
         let uids = trains.map((train) => `${train.uid}` )
         return (new Set(uids)).size == uids.length;
     }
 
     static create(operatorData: OperatorData): Operator {
-        return new Operator(
-            OperatorUid.new(operatorData.uid),
-            operatorData.trains.map((train: TrainData) => Train.create(train))
-        )
+        if (this.haveUniqueUids(operatorData.trains)) {
+            return new Operator(
+                OperatorUid.new(operatorData.uid),
+                operatorData.trains.map((train: TrainData) => Train.create(train))
+            )
+        } else {
+            throw new Error("Train UIDs must be unique for any given operator")
+        }
     }
 }
