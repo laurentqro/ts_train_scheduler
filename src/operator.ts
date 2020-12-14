@@ -1,3 +1,4 @@
+import { OperatorData, TrainData } from "./networkData"
 import { OperatorUid } from "./operator-uid"
 import { Train } from "./train"
 
@@ -18,5 +19,12 @@ export class Operator {
     haveUniqueUids(trains: Train[]): Boolean {
         let uids = trains.map((train) => `${train.uid}` )
         return (new Set(uids)).size == uids.length;
+    }
+
+    static create(operatorData: OperatorData): Operator {
+        return new Operator(
+            OperatorUid.new(operatorData.uid),
+            operatorData.trains.map((train: TrainData) => Train.create(train))
+        )
     }
 }

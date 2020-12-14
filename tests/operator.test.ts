@@ -1,3 +1,4 @@
+import { OperatorData } from "../src/networkData"
 import { Operator } from "../src/operator"
 import { OperatorUid } from "../src/operator-uid"
 import { PositiveInteger } from "../src/positive-integer"
@@ -11,4 +12,12 @@ test('each train is uniquely identified within its operator', () => {
 
     expect(() => new Operator(OperatorUid.new("DEF"), [train1])).not.toThrow(Error)
     expect(() => new Operator(OperatorUid.new("GHI"), [train2])).not.toThrow(Error)
+})
+
+test('create an operator', () => {
+    let operatorData: OperatorData = { uid: "ABC", trains: [] }
+    let operator: Operator = Operator.create(operatorData)
+
+    expect(`${operator.uid}`).toEqual("ABC")
+    expect(operator.trains).toEqual([])
 })
