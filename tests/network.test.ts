@@ -30,12 +30,12 @@ describe('The network', () => {
         network.addStation(station)
 
         expect(network.stations).toContain(station)
-        expect(Network.vertices).toEqual({ "FOO": station})
+        expect(Network.vertices).toEqual({ "FOO": station })
     })
 
     test('add track', () => {
-        let station1 = Station.create({ uid: "ABC", stopTime: 5, platforms: []})
-        let station2 = Station.create({ uid: "DEF", stopTime: 5, platforms: []})
+        let station1 = Station.create({ uid: "ABC", stopTime: 5, platforms: [] })
+        let station2 = Station.create({ uid: "DEF", stopTime: 5, platforms: [] })
 
         network.addStation(station1)
         network.addStation(station2)

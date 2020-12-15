@@ -9,10 +9,6 @@ export class Network {
     readonly tracks: Track[]
     readonly operators: Operator[]
 
-    static vertices: {
-        [key: string]: Station | undefined
-    } = {}
-
     private constructor(stations: Station[], tracks: Track[], operators: Operator[]) {
         this.stations = stations
         this.tracks = tracks
@@ -52,7 +48,6 @@ export class Network {
 
     addStation(station: Station): string | undefined {
         this.stations.push(station)
-        Network.vertices[`${station.uid}`] = station
         return undefined
     }
 
