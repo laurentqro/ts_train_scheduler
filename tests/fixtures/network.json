@@ -61,7 +61,7 @@
             "endpointUids": ["NCE", "JFK"],
             "capacity": 10,
             "maxSpeed": 150,
-            "distance": 500
+            "distance": 100
         },
         {
             "uid": "234567891",
