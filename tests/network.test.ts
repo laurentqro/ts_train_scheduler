@@ -13,7 +13,7 @@ describe('The network', () => {
 
     test('get operator by UID', () => {
         let operatorUid: OperatorUid = OperatorUid.new("ABC")
-        let operator: Operator | null = network.getOperator(operatorUid)
+        let operator: Operator | undefined = network.getOperator(operatorUid)
 
         expect(`${operator?.uid}`).toEqual("ABC")
     })
@@ -30,7 +30,6 @@ describe('The network', () => {
         network.addStation(station)
 
         expect(network.stations).toContain(station)
-        expect(Network.vertices).toEqual({ "FOO": station })
     })
 
     test('add track', () => {
