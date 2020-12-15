@@ -59,12 +59,19 @@ export class Network {
         let station2 = this.getStation(uid2)
 
         if (station1 && station2) {
-            Network.vertices[`${uid1}`] = station1
-            Network.vertices[`${uid2}`] = station2
+            Network.registerNeighbours(station1, station2)
             return undefined
         } else {
             return "Error"
         }
     }
+
+    private static registerNeighbours(station1: Station, station2: Station) {
+        station1.addNeighbour(station2)
+        station2.addNeighbour(station1)
+    }
+
+    private distance(stationUids: StationUid[]) {
+        return Track.getByEndpointUids(stationUids).distance
     }
 }
