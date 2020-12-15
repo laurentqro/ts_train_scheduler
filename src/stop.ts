@@ -1,8 +1,8 @@
-import { StationUid } from "./station-uid";
+import { Station } from "./station"
 import { Time } from "./time";
 
 export interface Stop {
-    readonly stationUid: StationUid
+    readonly station: Station
     readonly arrivalTime: Time
     readonly departureTime: Time
 }
