@@ -4,6 +4,20 @@ type NetworkData = {
     operators: OperatorData[]
 }
 
+type StationData = {
+    uid: string,
+    stopTime: number,
+    platforms: PlatformData[]
+}
+
+type TrackData = {
+    uid: string,
+    endpointUids: string[]
+    capacity: number
+    maxSpeed: number
+    distance: number
+}
+
 type OperatorData = {
     uid: string
     trains: TrainData[]
@@ -14,23 +28,9 @@ type TrainData = {
     length: number
 }
 
-type StationData = {
-    uid: string,
-    stopTime: number,
-    platforms: PlatformData[]
-}
-
 type PlatformData = {
     uid: string
     length: number
-}
-
-type TrackData = {
-    uid: string,
-    endpointUids: string[]
-    capacity: number
-    maxSpeed: number
-    distance: number
 }
 
 export { NetworkData, OperatorData, TrainData, StationData, PlatformData, TrackData }
