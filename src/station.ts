@@ -8,12 +8,17 @@ export class Station {
     readonly stopTime: PositiveInteger
     readonly platforms: readonly Platform[]
     neighbours: Station[]
+    shortest: number
+    visited: Boolean
+    previous?: Station
 
     private constructor(uid: StationUid, stopTime: PositiveInteger, platforms: Platform[]) {
         this.uid = uid
         this.stopTime = stopTime
         this.platforms = platforms
         this.neighbours = []
+        this.shortest = Infinity
+        this.visited = false
     }
 
     static haveUniqueUids(platforms: PlatformData[]): Boolean {

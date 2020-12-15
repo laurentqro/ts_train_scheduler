@@ -52,7 +52,15 @@ describe('The network', () => {
         network.addTrack(track)
 
         expect(network.tracks).toContain(track)
-        expect(Network.vertices["ABC"]).toEqual(station1)
-        expect(Network.vertices["DEF"]).toEqual(station2)
+    })
+
+    test('shortest path', () => {
+        let origin = network.getStation(StationUid.new("LHR"))
+        let intermediary = network.getStation(StationUid.new("NCE"))
+        let destination = network.getStation(StationUid.new("JFK"))
+
+        network.shortestPath(origin, destination!)
+
+        expect(network.shortestPath(origin, destination)).toEqual([origin, intermediary, destination])
     })
 })

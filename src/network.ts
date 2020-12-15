@@ -66,12 +66,58 @@ export class Network {
         }
     }
 
+    shortestPathsFromOrigin(origin: Station): Station[] {
+        // Use Dijkstra's shortest path algorithm to build a list of stations and platforms
+        // from origin to destination
+        // TODO: Implement without mutating Station
+
+        origin.shortest = 0
+
+        let visited: Station[] = []
+        let unvisited: Station[] = [origin].concat(origin.neighbours.filter((station) => !station.visited))
+
+        while (unvisited.length > 0) {
+            // Visit the unvisited station with the smallest known distance from the origin
+            let selectStationToVisit = (acc: Station, current: Station) => current.shortest < acc.shortest ? current : acc
+
+            let currentStation = unvisited.reduce(selectStationToVisit)
+
+            let unvisitedNeighbours = currentStation.neighbours.filter((s) => !s.visited)
+
+            // Examine the current station's unvisited neighbours
+            for (let neighbour of unvisitedNeighbours) {
+                let knownDistance = neighbour.shortest
+
+                // calculate the distance between neighbour and the origin
+                let newDistance = currentStation.shortest + Number(Network.distance([currentStation.uid, neighbour.uid]))
+
+                // if the calculated distance of a vertex is less than the known distance,
+                if (newDistance < knownDistance) {
+                    // update the shortest distance
+                    neighbour.shortest = Number(newDistance)
+
+                    // update the previous vertex for each of the updated distances
+                    neighbour.previous = currentStation
+                }
+            }
+
+            // mark the currently visited station as visited
+            currentStation.visited = true
+            visited.push(currentStation)
+
+            // update list of unvisited neighbours
+            unvisited = currentStation.neighbours.filter((station) => !station.visited)
+        }
+
+        return visited
+    }
+
     private static registerNeighbours(station1: Station, station2: Station) {
         station1.addNeighbour(station2)
         station2.addNeighbour(station1)
     }
 
-    private distance(stationUids: StationUid[]) {
+    private static distance(stationUids: StationUid[]) {
         return Track.getByEndpointUids(stationUids).distance
     }
 }
