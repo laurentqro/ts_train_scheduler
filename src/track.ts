@@ -55,4 +55,9 @@ export class Track {
 
         return instance
     }
+
+    static getByEndpointUids(stationUids: StationUid[]): Track {
+        let key = Track.key(stationUids)
+        return Track.instances[key]
+    }
 }
