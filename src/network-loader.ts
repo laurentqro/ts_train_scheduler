@@ -6,7 +6,7 @@ import { Track } from "./track";
 
 export class NetworkLoader {
     static loadNetwork(networkData: NetworkData): Network {
-        return new Network(
+        return Network.create(
             NetworkLoader.loadStations(networkData),
             NetworkLoader.loadTracks(networkData),
             NetworkLoader.loadOperators(networkData)
