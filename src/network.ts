@@ -13,14 +13,37 @@ export class Network {
         [key: string]: Station | undefined
     } = {}
 
-    constructor(stations: Station[], tracks: Track[], operators: Operator[]) {
+    private constructor(stations: Station[], tracks: Track[], operators: Operator[]) {
         this.stations = stations
         this.tracks = tracks
         this.operators = operators
     }
 
-    getOperator(uid: OperatorUid): Operator | null {
-        return this.operators.find((operator) => operator.uid == uid) || null
+    static create(stations: Station[], tracks: Track[], operators: Operator[]): Network {
+        let network = new Network([], [], [])
+
+        for (let station of stations) {
+            network.addStation(station)
+        }
+
+        for (let track of tracks) {
+            network.addTrack(track)
+        }
+
+        for (let operator of operators) {
+            network.addOperator(operator)
+        }
+
+        return network
+    }
+
+    getOperator(uid: OperatorUid): Operator | undefined {
+        return this.operators.find((operator) => operator.uid == uid)
+    }
+
+    addOperator(operator: Operator): undefined {
+        this.operators.push(operator)
+        return undefined
     }
 
     getStation(uid: StationUid): Station | undefined {
